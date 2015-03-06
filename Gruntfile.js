@@ -298,6 +298,8 @@ module.exports = function (grunt) {
       server: {
         options: {
           port: 3000,
+          keepalive: true,
+          livereload: true,
           base: '.'
         }
       }
@@ -342,6 +344,10 @@ module.exports = function (grunt) {
     },
 
     watch: {
+      options: {
+        spawn: false,
+        livereload: true
+      },
       src: {
         files: '<%= jshint.core.src %>',
         tasks: ['jshint:src', 'qunit', 'concat']
@@ -353,6 +359,10 @@ module.exports = function (grunt) {
       less: {
         files: 'less/**/*.less',
         tasks: 'less'
+      },
+      html: {
+        files: 'index.html',
+        tasks: []
       }
     },
 
@@ -490,6 +500,7 @@ module.exports = function (grunt) {
   grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
 
   grunt.registerTask('prep-release', ['jekyll:github', 'compress']);
+  grunt.registerTask('serverWatch', ['concurent:serverWatch']);
 
   // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
   // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.
