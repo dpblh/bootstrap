@@ -35,21 +35,22 @@
 
 // Mixin for generating new styles
 .btn-styles(@btn-color: #555) {
-  #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 12%));
+  #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 2%));
   .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners; see https://github.com/twbs/bootstrap/issues/10620
   background-repeat: repeat-x;
-  border-color: darken(@btn-color, 14%);
+  border-color: darken(@btn-color, 2%);
 
   &:hover,
   &:focus  {
-    background-color: darken(@btn-color, 12%);
-    background-position: 0 -15px;
+    background-color: #3296c8;
+    background-position: 0 100px;
+    border-color: #1478aa;
   }
 
   &:active,
   &.active {
-    background-color: darken(@btn-color, 12%);
-    border-color: darken(@btn-color, 14%);
+    background-color: #1e82b4;
+    border-color: none;
   }
 
   &.disabled,
@@ -70,7 +71,7 @@
 }
 
 // Apply the mixin to the buttons
-.btn-default { .btn-styles(@btn-default-bg); text-shadow: 0 1px 0 #fff; border-color: #ccc; }
+.btn-default { .btn-styles(@btn-default-bg); text-shadow: 0 -1px 0 #777; border-color: #8c8c8c;}
 .btn-primary { .btn-styles(@btn-primary-bg); }
 .btn-success { .btn-styles(@btn-success-bg); }
 .btn-info    { .btn-styles(@btn-info-bg); }
@@ -94,8 +95,9 @@
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  #gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
-  background-color: darken(@dropdown-link-hover-bg, 5%);
+ // #gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
+ // background-color: darken(@dropdown-link-hover-bg, 5%);
+ color: white;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
