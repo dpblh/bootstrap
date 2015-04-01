@@ -1,28 +1,23 @@
-
 //
 // Load core variables and mixins
 // --------------------------------------------------
-
 @import "variables.less";
 @import "mixins.less";
 
 // nav-bar
-@nav-bar-link-hover-bg:         #66afe9;
-@nav-bar-link-hover-color:      darken(@gray-dark, 5%);
-@nav-bar-link-active-bg:        #999;
-@nav-bar-link-active-color:     darken(@gray-dark, 5%);
+@nav-bar-link-hover-bg: #66afe9;
+@nav-bar-link-hover-color: darken(@gray-dark, 5%);
+@nav-bar-link-active-bg: #999;
+@nav-bar-link-active-color: darken(@gray-dark, 5%);
 
-@side-nav-height:                  55px;
-@side-nav-padding-vertical:        ((@side-nav-height - @line-height-computed) / 2);
-@side-nav-bg:                      #4b5a64;
-@side-nav-active-bg:               #45535c;
-@side-nav-hover-bg:                #52606a;
-@side-nav-color:                   #c8dcf0;
-@side-nav-border:                  1px solid #5d6a73;
-
-body {
-  padding: 20px;
-}
+@side-nav-height: 55px;
+@side-nav-weight: 225px;
+@side-nav-padding-vertical: ((@side-nav-height - @line-height-computed) / 2);
+@side-nav-bg: #4b5a64;
+@side-nav-active-bg: #45535c;
+@side-nav-hover-bg: #52606a;
+@side-nav-color: #c8dcf0;
+@side-nav-border: 1px solid #5d6a73;
 
 //
 // Buttons
@@ -35,14 +30,14 @@ body {
 .btn-info,
 .btn-warning,
 .btn-danger {
-  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+  @shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
   .box-shadow(@shadow);
 
   // Reset the shadow
   &:active,
   &.active {
-    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+    .box-shadow(inset 0 3px 5px rgba(0, 0, 0, .125));
   }
 
   .badge {
@@ -58,7 +53,7 @@ body {
   border-color: darken(@btn-color, 2%);
 
   &:hover,
-  &:focus  {
+  &:focus {
     background-color: #3296c8;
     background-position: 0 100px;
     border-color: #1478aa;
@@ -88,13 +83,31 @@ body {
 }
 
 // Apply the mixin to the buttons
-.btn-default { .btn-styles(@btn-default-bg); text-shadow: 0 -1px 0 #777; border-color: #8c8c8c;}
-.btn-primary { .btn-styles(@btn-primary-bg); }
-.btn-success { .btn-styles(@btn-success-bg); }
-.btn-info    { .btn-styles(@btn-info-bg); }
-.btn-warning { .btn-styles(@btn-warning-bg); }
-.btn-danger  { .btn-styles(@btn-danger-bg); }
+.btn-default {
+  .btn-styles(@btn-default-bg);
+  text-shadow: 0 -1px 0 #777;
+  border-color: #8c8c8c;
+}
 
+.btn-primary {
+  .btn-styles(@btn-primary-bg);
+}
+
+.btn-success {
+  .btn-styles(@btn-success-bg);
+}
+
+.btn-info {
+  .btn-styles(@btn-info-bg);
+}
+
+.btn-warning {
+  .btn-styles(@btn-warning-bg);
+}
+
+.btn-danger {
+  .btn-styles(@btn-danger-bg);
+}
 
 //
 // Images
@@ -102,9 +115,8 @@ body {
 
 .thumbnail,
 .img-thumbnail {
-  .box-shadow(0 1px 2px rgba(0,0,0,.075));
+  .box-shadow(0 1px 2px rgba(0, 0, 0, .075));
 }
-
 
 //
 // Dropdowns
@@ -112,10 +124,11 @@ body {
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
- // #gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
- // background-color: darken(@dropdown-link-hover-bg, 5%);
- color: white;
+  // #gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
+  // background-color: darken(@dropdown-link-hover-bg, 5%);
+  color: white;
 }
+
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
@@ -123,28 +136,28 @@ body {
   background-color: darken(@dropdown-link-active-bg, 5%);
 }
 
-
 //
 // Navbar
 // --------------------------------------------------
 
 // Default navbar
 .navbar-default {
-//  #gradient > .vertical(@start-color: lighten(@navbar-default-bg, 10%); @end-color: @navbar-default-bg);
+  //  #gradient > .vertical(@start-color: lighten(@navbar-default-bg, 10%); @end-color: @navbar-default-bg);
   .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
   border-radius: @navbar-border-radius;
-//  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
-//  .box-shadow(@shadow);
+  //  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
+  //  .box-shadow(@shadow);
 
   .navbar-nav > .open > a,
   .navbar-nav > .active > a {
-//    #gradient > .vertical(@start-color: darken(@navbar-default-link-active-bg, 5%); @end-color: darken(@navbar-default-link-active-bg, 2%));
-    .box-shadow(inset 0 3px 9px rgba(0,0,0,.075));
+    //    #gradient > .vertical(@start-color: darken(@navbar-default-link-active-bg, 5%); @end-color: darken(@navbar-default-link-active-bg, 2%));
+    .box-shadow(inset 0 3px 9px rgba(0, 0, 0, .075));
   }
 }
+
 .navbar-brand,
 .navbar-nav > li > a {
-  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .25);
 }
 
 // Inverted navbar
@@ -155,12 +168,12 @@ body {
   .navbar-nav > .open > a,
   .navbar-nav > .active > a {
     #gradient > .vertical(@start-color: @navbar-inverse-link-active-bg; @end-color: lighten(@navbar-inverse-link-active-bg, 2.5%));
-    .box-shadow(inset 0 3px 9px rgba(0,0,0,.25));
+    .box-shadow(inset 0 3px 9px rgba(0, 0, 0, .25));
   }
 
   .navbar-brand,
   .navbar-nav > li > a {
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
   }
 }
 
@@ -183,15 +196,14 @@ body {
   }
 }
 
-
 //
 // Alerts
 // --------------------------------------------------
 
 // Common styles
 .alert {
-  text-shadow: 0 1px 0 rgba(255,255,255,.2);
-  @shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 2px rgba(0,0,0,.05);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .2);
+  @shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 2px rgba(0, 0, 0, .05);
   .box-shadow(@shadow);
 }
 
@@ -202,11 +214,21 @@ body {
 }
 
 // Apply the mixin to the alerts
-.alert-success    { .alert-styles(@alert-success-bg); }
-.alert-info       { .alert-styles(@alert-info-bg); }
-.alert-warning    { .alert-styles(@alert-warning-bg); }
-.alert-danger     { .alert-styles(@alert-danger-bg); }
+.alert-success {
+  .alert-styles(@alert-success-bg);
+}
 
+.alert-info {
+  .alert-styles(@alert-info-bg);
+}
+
+.alert-warning {
+  .alert-styles(@alert-warning-bg);
+}
+
+.alert-danger {
+  .alert-styles(@alert-danger-bg);
+}
 
 //
 // Progress bars
@@ -223,11 +245,25 @@ body {
 }
 
 // Apply the mixin to the progress bars
-.progress-bar            { .progress-bar-styles(@progress-bar-bg); }
-.progress-bar-success    { .progress-bar-styles(@progress-bar-success-bg); }
-.progress-bar-info       { .progress-bar-styles(@progress-bar-info-bg); }
-.progress-bar-warning    { .progress-bar-styles(@progress-bar-warning-bg); }
-.progress-bar-danger     { .progress-bar-styles(@progress-bar-danger-bg); }
+.progress-bar {
+  .progress-bar-styles(@progress-bar-bg);
+}
+
+.progress-bar-success {
+  .progress-bar-styles(@progress-bar-success-bg);
+}
+
+.progress-bar-info {
+  .progress-bar-styles(@progress-bar-info-bg);
+}
+
+.progress-bar-warning {
+  .progress-bar-styles(@progress-bar-warning-bg);
+}
+
+.progress-bar-danger {
+  .progress-bar-styles(@progress-bar-danger-bg);
+}
 
 // Reset the striped class because our mixins don't do multiple gradients and
 // the above custom styles override the new `.progress-bar-striped` in v3.2.0.
@@ -235,15 +271,15 @@ body {
   #gradient > .striped();
 }
 
-
 //
 // List groups
 // --------------------------------------------------
 
 .list-group {
   border-radius: @border-radius-base;
-  .box-shadow(0 1px 2px rgba(0,0,0,.075));
+  .box-shadow(0 1px 2px rgba(0, 0, 0, .075));
 }
+
 .list-group-item.active,
 .list-group-item.active:hover,
 .list-group-item.active:focus {
@@ -256,14 +292,13 @@ body {
   }
 }
 
-
 //
 // Panels
 // --------------------------------------------------
 
 // Common styles
 .panel {
-  .box-shadow(0 1px 2px rgba(0,0,0,.05));
+  .box-shadow(0 1px 2px rgba(0, 0, 0, .05));
 }
 
 // Mixin for generating new styles
@@ -272,13 +307,29 @@ body {
 }
 
 // Apply the mixin to the panel headings only
-.panel-default > .panel-heading   { .panel-heading-styles(@panel-default-heading-bg); }
-.panel-primary > .panel-heading   { .panel-heading-styles(@panel-primary-heading-bg); }
-.panel-success > .panel-heading   { .panel-heading-styles(@panel-success-heading-bg); }
-.panel-info > .panel-heading      { .panel-heading-styles(@panel-info-heading-bg); }
-.panel-warning > .panel-heading   { .panel-heading-styles(@panel-warning-heading-bg); }
-.panel-danger > .panel-heading    { .panel-heading-styles(@panel-danger-heading-bg); }
+.panel-default > .panel-heading {
+  .panel-heading-styles(@panel-default-heading-bg);
+}
 
+.panel-primary > .panel-heading {
+  .panel-heading-styles(@panel-primary-heading-bg);
+}
+
+.panel-success > .panel-heading {
+  .panel-heading-styles(@panel-success-heading-bg);
+}
+
+.panel-info > .panel-heading {
+  .panel-heading-styles(@panel-info-heading-bg);
+}
+
+.panel-warning > .panel-heading {
+  .panel-heading-styles(@panel-warning-heading-bg);
+}
+
+.panel-danger > .panel-heading {
+  .panel-heading-styles(@panel-danger-heading-bg);
+}
 
 //
 // Wells
@@ -287,10 +338,9 @@ body {
 .well {
   #gradient > .vertical(@start-color: darken(@well-bg, 5%); @end-color: @well-bg);
   border-color: darken(@well-bg, 10%);
-  @shadow: inset 0 1px 3px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
+  @shadow: inset 0 1px 3px rgba(0, 0, 0, .05), 0 1px 0 rgba(255, 255, 255, .1);
   .box-shadow(@shadow);
 }
-
 
 #wrapper {
   padding-left: 0;
@@ -313,69 +363,100 @@ body {
   }
 
   #page-wrapper {
-    padding: 10px;
+    padding: @navbar-height 20px 20px 20px;
   }
 }
 
 @media (min-width: 768px) {
-  .side-nav {
+  .side-nav-container {
+
     position: fixed;
     height: 100%;
+    overflow: hidden;
+    width: @side-nav-weight;
+    left: 0;
     top: (@navbar-height + 1);
-    width: 225px;
-    border: none;
-    border-radius: 0;
-    overflow-y: auto;
-    background-color: @side-nav-bg;
-  }
 
-  .side-nav > li > a {
-    color: @side-nav-color !important;
-    border-bottom: @side-nav-border;
-    width: 225px;
-    height: @side-nav-height;
-    padding-top: @side-nav-padding-vertical;
-    padding-bottom: @side-nav-padding-vertical;
-  }
-
-  .side-nav li a:hover,
-  .side-nav li a:focus {
-    outline: none;
-    color: @side-nav-color;
-    background-color: @side-nav-hover-bg !important;
-  }
-
-  .side-nav > li.active {
-    > a {
-      background-color: @side-nav-active-bg !important;
-      border-left:  3px solid #0097CB;
-      &:after {
-        position: absolute;
-        content: " ";
-        right: 0;
-        top: 0;
-        border-right: 3px solid #ffffff;
-        border-top: 2px solid transparent;
-        border-bottom: 2px solid transparent;
-        height: 100%;
-      }
+    .side-nav {
+      overflow: auto;
+      padding-right: 17px;
+      height: 100%;
+      border: none;
+      border-radius: 0;
+      background-color: @side-nav-bg;
+      padding-bottom: @navbar-height;
     }
-    .sub-nav li a {
-      color: @side-nav-color;
-      background-color: @side-nav-active-bg;
+
+    .side-nav > li > a {
+      color: @side-nav-color !important;
+      border-bottom: @side-nav-border;
+      width: @side-nav-weight;
       padding-top: @side-nav-padding-vertical;
       padding-bottom: @side-nav-padding-vertical;
-      border-bottom: @side-nav-border;
+    }
 
-      &:hover {
-        //        color: @side-nav-color;
+    .side-nav li a:hover,
+    .side-nav li a:focus {
+      outline: none;
+      color: @side-nav-color;
+      background-color: @side-nav-hover-bg !important;
+    }
+
+    .side-nav > li.active {
+      > a {
+        background-color: @side-nav-active-bg !important;
+        border-left: 3px solid #0097CB;
+        &:after {
+          position: absolute;
+          content: " ";
+          right: 0;
+          top: 0;
+          border-right: 3px solid #ffffff;
+          border-top: 2px solid transparent;
+          border-bottom: 2px solid transparent;
+          height: 100%;
+        }
+      }
+      .sub-nav li a {
+        color: @side-nav-color;
+        background-color: @side-nav-active-bg;
+        padding-top: @side-nav-padding-vertical;
+        padding-bottom: @side-nav-padding-vertical;
+        border-bottom: @side-nav-border;
+
+        &:hover {
+          //        color: @side-nav-color;
+        }
       }
     }
-  }
 
-  .side-nav .sub-nav li a {
-    padding-left: 20px;
-    width: 225px;
+    .sub-nav {
+      .pagination {
+
+        margin: 0;
+        display: block;
+
+        li {
+          display: inline;
+
+          a {
+            border: none;
+            padding: 0;
+            margin: 0;
+            display: inline;
+            width: (@side-nav-weight / 2) !important;
+          }
+        }
+      }
+    }
+
+    .side-nav .sub-nav li a {
+      padding-left: 20px;
+      width: 225px;
+    }
   }
 }
+
+
+
 
