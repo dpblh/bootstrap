@@ -56,8 +56,7 @@
   @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
   &:focus {
     border-left: 3px solid @color;
-    margin-left: -2px;
-    border-radius: 0;
+    padding-left: (@padding-base-horizontal - 2);
     outline: 0;
   }
 }

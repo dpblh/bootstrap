@@ -6,6 +6,23 @@
 @import "variables.less";
 @import "mixins.less";
 
+// nav-bar
+@nav-bar-link-hover-bg:         #66afe9;
+@nav-bar-link-hover-color:      darken(@gray-dark, 5%);
+@nav-bar-link-active-bg:        #999;
+@nav-bar-link-active-color:     darken(@gray-dark, 5%);
+
+@side-nav-height:                  55px;
+@side-nav-padding-vertical:        ((@side-nav-height - @line-height-computed) / 2);
+@side-nav-bg:                      #4b5a64;
+@side-nav-active-bg:               #45535c;
+@side-nav-hover-bg:                #52606a;
+@side-nav-color:                   #c8dcf0;
+@side-nav-border:                  1px solid #5d6a73;
+
+body {
+  padding: 20px;
+}
 
 //
 // Buttons
@@ -113,15 +130,15 @@
 
 // Default navbar
 .navbar-default {
-  #gradient > .vertical(@start-color: lighten(@navbar-default-bg, 10%); @end-color: @navbar-default-bg);
+//  #gradient > .vertical(@start-color: lighten(@navbar-default-bg, 10%); @end-color: @navbar-default-bg);
   .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
   border-radius: @navbar-border-radius;
-  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
-  .box-shadow(@shadow);
+//  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
+//  .box-shadow(@shadow);
 
   .navbar-nav > .open > a,
   .navbar-nav > .active > a {
-    #gradient > .vertical(@start-color: darken(@navbar-default-link-active-bg, 5%); @end-color: darken(@navbar-default-link-active-bg, 2%));
+//    #gradient > .vertical(@start-color: darken(@navbar-default-link-active-bg, 5%); @end-color: darken(@navbar-default-link-active-bg, 2%));
     .box-shadow(inset 0 3px 9px rgba(0,0,0,.075));
   }
 }
@@ -273,3 +290,92 @@
   @shadow: inset 0 1px 3px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
   .box-shadow(@shadow);
 }
+
+
+#wrapper {
+  padding-left: 0;
+}
+
+#page-wrapper {
+  width: 100%;
+  padding: 0;
+  background-color: #fff;
+}
+
+.huge {
+  font-size: 50px;
+  line-height: normal;
+}
+
+@media (min-width: 768px) {
+  #wrapper {
+    padding-left: 225px;
+  }
+
+  #page-wrapper {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .side-nav {
+    position: fixed;
+    height: 100%;
+    top: (@navbar-height + 1);
+    width: 225px;
+    border: none;
+    border-radius: 0;
+    overflow-y: auto;
+    background-color: @side-nav-bg;
+  }
+
+  .side-nav > li > a {
+    color: @side-nav-color !important;
+    border-bottom: @side-nav-border;
+    width: 225px;
+    height: @side-nav-height;
+    padding-top: @side-nav-padding-vertical;
+    padding-bottom: @side-nav-padding-vertical;
+  }
+
+  .side-nav li a:hover,
+  .side-nav li a:focus {
+    outline: none;
+    color: @side-nav-color;
+    background-color: @side-nav-hover-bg !important;
+  }
+
+  .side-nav > li.active {
+    > a {
+      background-color: @side-nav-active-bg !important;
+      border-left:  3px solid #0097CB;
+      &:after {
+        position: absolute;
+        content: " ";
+        right: 0;
+        top: 0;
+        border-right: 3px solid #ffffff;
+        border-top: 2px solid transparent;
+        border-bottom: 2px solid transparent;
+        height: 100%;
+      }
+    }
+    .sub-nav li a {
+      color: @side-nav-color;
+      background-color: @side-nav-active-bg;
+      padding-top: @side-nav-padding-vertical;
+      padding-bottom: @side-nav-padding-vertical;
+      border-bottom: @side-nav-border;
+
+      &:hover {
+        //        color: @side-nav-color;
+      }
+    }
+  }
+
+  .side-nav .sub-nav li a {
+    padding-left: 20px;
+    width: 225px;
+  }
+}
+

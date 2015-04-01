@@ -346,7 +346,7 @@ module.exports = function (grunt) {
     watch: {
       options: {
         spawn: false,
-        livereload: true
+        livereload: 1337
       },
       src: {
         files: '<%= jshint.core.src %>',
